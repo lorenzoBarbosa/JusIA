@@ -1,4 +1,4 @@
-# ⚖️ JusIA
+# ⚖️ JusIA -
 
 > Atendimento automatizado e gestão de demandas para escritórios de advocacia, com agentes de IA e WhatsApp.
 
