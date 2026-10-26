@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="index.css">
+        <link rel="stylesheet" href="painel.css">
+        <title>Painel de Leads | Desteffani &amp; Barbosa</title>
+    </head>
+    <body>
+        <header class="cabecalho">
+            <div class="cabecalho-conteudo">
+                <a href="painel.html" class="logo-link">
+                    <!-- Espaço da logo (trocar por <img> depois) -->
+                    <div class="logo-imagem"></div>
+                    <div class="logo-texto">
+                        <strong>Desteffani &amp; Barbosa</strong>
+                        <span>Painel interno</span>
+                    </div>
+                </a>
+
+                <input type="checkbox" class="menu-toggle" id="menu-toggle">
+                <label for="menu-toggle" class="menu-botao" aria-label="Abrir menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </label>
+
+                <nav class="menu">
+                    <form class="busca" action="painel.html" method="get">
+                        <input type="search" name="busca" placeholder="Buscar lead por nome ou telefone" aria-label="Buscar lead">
+                        <button type="submit">Buscar</button>
+                    </form>
+                    <a href="painel.html">Todas as leads</a>
+                    <a href="painel.html">Agenda</a>
+                    <a href="painel.html" class="menu-contato">Sair</a>
+                </nav>
+            </div>
+        </header>
+
+        <main>
+            <div class="painel-conteudo">
+
+                <section class="painel-secao">
+                    <div class="secao-cabecalho">
+                        <div>
+                            <p class="rotulo">Validação</p>
+                            <h2>Leads recentes</h2>
+                        </div>
+                        <span class="contador">Novas</span>
+                    </div>
+                    <div class="quadro">
+                        <!-- O N8N preenche esta lista com um .lead-card por lead -->
+                        <div class="leads-lista" id="leads-recentes">
+
+                            <!-- Card de exemplo (modelo para o N8N) -->
+                            <article class="lead-card">
+                                <div class="lead-topo">
+                                    <h3>Nome do cliente</h3>
+                                    <span class="lead-status">Nova</span>
+                                </div>
+                                <p class="lead-info"><strong>Telefone:</strong> (27) 99999-9999</p>
+                                <p class="lead-info"><strong>Assunto:</strong> Área do direito</p>
+                                <p class="lead-info"><strong>Recebida em:</strong> 25/10/2026 às 20:37</p>
+                                <p class="lead-resumo">Resumo do atendimento feito pela secretária de IA no WhatsApp.</p>
+                                <div class="lead-botoes">
+                                    <button type="button" class="botao-validar">Validar</button>
+                                    <button type="button" class="botao-recusar">Recusar</button>
+                                </div>
+                            </article>
+
+                        </div>
+                    </div>
+                </section>
+
+                <section class="painel-secao">
+                    <div class="secao-cabecalho">
+                        <div>
+                            <p class="rotulo">Atenção</p>
+                            <h2>Leads sem resposta há muito tempo</h2>
+                        </div>
+                        <span class="contador contador-alerta">Pendentes</span>
+                    </div>
+                    <div class="quadro">
+                        <!-- O N8N preenche esta lista com um .lead-card.antiga por lead -->
+                        <div class="leads-lista" id="leads-antigas">
+
+                            <!-- Card de exemplo (modelo para o N8N) -->
+                            <article class="lead-card antiga">
+                                <div class="lead-topo">
+                                    <h3>Nome do cliente</h3>
+                                    <span class="lead-status">Sem resposta há 5 dias</span>
+                                </div>
+                                <p class="lead-info"><strong>Telefone:</strong> (27) 99999-9999</p>
+                                <p class="lead-info"><strong>Assunto:</strong> Área do direito</p>
+                                <p class="lead-info"><strong>Recebida em:</strong> 20/10/2026 às 09:15</p>
+                                <p class="lead-resumo">Resumo do atendimento feito pela secretária de IA no WhatsApp.</p>
+                                <div class="lead-botoes">
+                                    <button type="button" class="botao-validar">Validar</button>
+                                    <button type="button" class="botao-recusar">Recusar</button>
+                                </div>
+                            </article>
+
+                        </div>
+                    </div>
+                </section>
+
+                <section class="faixa-link">
+                    <div>
+                        <h2>Todas as leads</h2>
+                        <p>Veja as leads já validadas e as que ainda aguardam validação.</p>
+                    </div>
+                    <a href="painel.html" class="botao-claro">Ver todas as leads</a>
+                </section>
+
+                <section class="nova-lead">
+                    <h2>Cadastrar uma lead manualmente</h2>
+                    <p>Recebeu um contato por telefone ou pessoalmente? Cadastre os dados aqui.</p>
+                    <a href="painel.html" class="botao">+ Criar lead</a>
+                </section>
+
+            </div>
+        </main>
+
+        <footer class="rodape">
+            <div class="rodape-conteudo">
+                <div class="rodape-marca">
+                    <h2>Desteffani &amp; Barbosa</h2>
+                    <p>Área restrita aos funcionários do escritório</p>
+                </div>
+            </div>
+            <p class="rodape-copy">© 2026 Desteffani &amp; Barbosa. Todos os direitos reservados.</p>
+        </footer>
+    </body>
+</html>

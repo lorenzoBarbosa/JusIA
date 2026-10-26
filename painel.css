@@ -1,0 +1,267 @@
+/* Este arquivo complementa o index.css (cabeçalho, menu, botão e rodapé vêm de lá) */
+:root {
+  --alerta: #a63d2f;
+  --alerta-fundo: #f6e3df;
+}
+
+/* BUSCA (dentro do cabeçalho) */
+.busca {
+  display: flex;
+}
+
+.busca input {
+  width: 220px;
+  padding: 8px 12px;
+  background-color: var(--marrom);
+  color: var(--creme);
+  border: 1px solid var(--dourado);
+  border-right: none;
+  font-family: var(--fonte-texto);
+  font-size: 0.85rem;
+}
+
+.busca button {
+  padding: 8px 14px;
+  background-color: var(--dourado);
+  color: var(--marrom-escuro);
+  border: none;
+  font-family: var(--fonte-texto);
+  font-size: 0.85rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.busca button:hover {
+  background-color: var(--creme);
+}
+
+@media (max-width: 800px) {
+  .busca {
+    margin-bottom: 8px;
+  }
+  .busca input {
+    width: 100%;
+    flex: 1;
+  }
+}
+
+/* CONTEÚDO */
+.painel-conteudo {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+.painel-secao {
+  margin-bottom: 50px;
+}
+
+.secao-cabecalho {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.secao-cabecalho h2,
+.faixa-link h2,
+.nova-lead h2 {
+  font-family: var(--fonte-titulo);
+  font-weight: 500;
+  font-size: 1.6rem;
+  line-height: 1.2;
+  color: var(--marrom);
+}
+
+.contador {
+  padding: 4px 12px;
+  background-color: var(--marrom);
+  color: var(--creme);
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+.contador-alerta {
+  background-color: var(--alerta);
+}
+
+/* QUADRO (espaço branco preenchido pelo N8N) */
+.quadro {
+  min-height: 220px;
+  padding: 20px;
+  background-color: var(--branco);
+  border: 1px solid var(--linha);
+  border-radius: 4px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+
+.leads-lista {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+}
+
+@media (min-width: 600px) {
+  .leads-lista { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (min-width: 1200px) {
+  .leads-lista { grid-template-columns: repeat(3, 1fr); }
+}
+
+/* CARD DE LEAD */
+.lead-card {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 16px;
+  background-color: var(--creme);
+  border: 1px solid var(--linha);
+  border-left: 4px solid var(--dourado);
+  transition: transform 0.2s, box-shadow 0.3s;
+}
+
+.lead-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.lead-card.antiga {
+  border-left-color: var(--alerta);
+}
+
+.lead-topo {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.lead-topo h3 {
+  font-family: var(--fonte-titulo);
+  font-weight: 500;
+  font-size: 1.2rem;
+  color: var(--marrom);
+}
+
+.lead-status {
+  padding: 2px 8px;
+  background-color: var(--branco);
+  color: var(--bronze);
+  border: 1px solid var(--dourado);
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-align: center;
+}
+
+.lead-card.antiga .lead-status {
+  background-color: var(--alerta-fundo);
+  color: var(--alerta);
+  border-color: var(--alerta);
+}
+
+.lead-info {
+  font-size: 0.9rem;
+}
+
+.lead-resumo {
+  margin-top: 4px;
+  padding-top: 8px;
+  border-top: 1px solid var(--linha);
+  font-size: 0.9rem;
+  font-style: italic;
+}
+
+.lead-botoes {
+  display: flex;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.lead-botoes button {
+  flex: 1;
+  padding: 10px;
+  font-family: var(--fonte-texto);
+  font-size: 0.85rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.botao-validar {
+  background-color: var(--marrom-escuro);
+  color: var(--creme);
+  border: 1px solid var(--marrom-escuro);
+}
+
+.botao-validar:hover {
+  background-color: var(--bronze);
+  border-color: var(--bronze);
+}
+
+.botao-recusar {
+  background-color: transparent;
+  color: var(--alerta);
+  border: 1px solid var(--alerta);
+}
+
+.botao-recusar:hover {
+  background-color: var(--alerta);
+  color: var(--branco);
+}
+
+/* FAIXA "TODAS AS LEADS" */
+.faixa-link {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 20px;
+  margin-bottom: 50px;
+  padding: 30px 20px;
+  background-color: var(--marrom-escuro);
+  color: var(--creme);
+}
+
+.faixa-link h2 {
+  color: var(--creme);
+}
+
+.faixa-link p {
+  color: var(--dourado);
+}
+
+.botao-claro {
+  background-color: var(--creme);
+  color: var(--marrom-escuro);
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 700;
+  padding: 16px 20px;
+  transition: background-color 0.2s;
+}
+
+.botao-claro:hover {
+  background-color: var(--dourado);
+}
+
+@media (min-width: 900px) {
+  .faixa-link {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 30px 40px;
+  }
+}
+
+/* CRIAÇÃO MANUAL DE LEAD */
+.nova-lead {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  padding: 40px 20px;
+  border: 1px dashed var(--dourado);
+  text-align: center;
+}

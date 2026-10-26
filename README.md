@@ -7,23 +7,23 @@
 
 ---
 
-## 📖 Sobre o projeto
+## Sobre o projeto
 
 O **JusIA** é um sistema de atendimento automatizado ao cliente e gerenciamento de demandas para escritórios de advocacia. Uma **secretária virtual com IA** atende os clientes pelo **WhatsApp**, coleta as informações necessárias e envia a solicitação para a equipe do escritório, que acompanha, valida e aprova cada demanda por uma interface web.
 
 Com isso, o escritório ganha agilidade no primeiro contato, organiza melhor a agenda e mantém os humanos no controle das decisões importantes: nada é confirmado ao cliente sem passar pela validação da equipe.
 
-## ✨ Funcionalidades
+## Funcionalidades
 
-- 💬 **Atendimento via WhatsApp** conduzido por um agente de IA (secretária virtual)
-- 📥 **Captação e qualificação de leads** com envio automático para validação
-- ✅ **Validação de leads** por secretários e advogados
-- 📅 **Agenda de horários marcados** com atualização de calendário
-- 🔔 **Confirmação do atendimento** ao cliente pelo WhatsApp após a aprovação
-- 👥 **Cadastro de secretários** pelo advogado
-- 🔐 **Controle de acesso por perfil** (cliente, secretário, advogado e administrador)
+- **Atendimento via WhatsApp** conduzido por um agente de IA (secretária virtual)
+- **Captação e qualificação de leads** com envio automático para validação
+- **Validação de leads** por secretários e advogados
+- **Agenda de horários marcados** com atualização de calendário
+- **Confirmação do atendimento** ao cliente pelo WhatsApp após a aprovação
+- **Cadastro de secretários** pelo advogado
+- **Controle de acesso por perfil** (cliente, secretário, advogado e administrador)
 
-## 🔄 Fluxo de funcionamento
+## Fluxo de funcionamento
 
 ```mermaid
 flowchart LR
@@ -35,7 +35,7 @@ flowchart LR
     F --> G[IA confirma o atendimento ao cliente]
 ```
 
-## 👥 Perfis de usuário
+## Perfis de usuário
 
 | Perfil | Descrição |
 |---|---|
@@ -44,7 +44,7 @@ flowchart LR
 | **Advogado** | Acessa os horários marcados, valida leads e cadastra secretários. |
 | **Administrador** | Acesso total ao sistema. |
 
-## 🖥️ Interfaces
+## Interfaces
 
 O protótipo das telas está disponível no Gloomaps: [ver protótipo](https://www.gloomaps.com/94VqE1sTXK)
 
@@ -54,7 +54,7 @@ O protótipo das telas está disponível no Gloomaps: [ver protótipo](https://w
 | **Home Advogado** | Validação de leads, atualização do calendário com horários e envio de resposta ao cliente. |
 | **WhatsApp** | Agente de IA que realiza o atendimento, envia a requisição de serviço para o Home Advogado e confirma o atendimento ao cliente. |
 
-## 🎨 Identidade visual
+## Identidade visual
 
 Paleta de cores planejada, em tons terrosos que transmitem sobriedade e confiança:
 
@@ -66,36 +66,13 @@ Paleta de cores planejada, em tons terrosos que transmitem sobriedade e confian�
 | Marrom dourado | `#935F32` |
 | Off-white | `#F5F4E6` |
 
-## 🛠️ Tecnologias
-
-> Preencha com as tecnologias utilizadas no projeto.
+## Tecnologias
 
 - **Front-end:** _a definir_
 - **Back-end:** _a definir_
 - **Banco de dados:** _a definir_
 - **Automação / Agentes de IA:** _a definir_
 - **Integração WhatsApp:** _a definir_
-
-## 🚀 Como executar
-
-> Ajuste os comandos conforme a stack escolhida.
-
-```bash
-# Clone o repositório
-git clone https://github.com/<seu-usuario>/jusia.git
-
-# Acesse a pasta do projeto
-cd jusia
-
-# Instale as dependências
-# ex.: npm install
-
-# Configure as variáveis de ambiente
-cp .env.example .env
-
-# Inicie o projeto
-# ex.: npm run dev
-```
 
 ### Variáveis de ambiente
 
@@ -118,20 +95,10 @@ DATABASE_URL=
 - [ ] Controle de acesso por perfil
 - [ ] Painel do administrador
 
-## 🤝 Contribuindo
-
-Contribuições são bem-vindas! Para contribuir:
-
-1. Faça um fork do projeto
-2. Crie uma branch: `git checkout -b feature/minha-feature`
-3. Commit suas alterações: `git commit -m "feat: minha feature"`
-4. Envie para a branch: `git push origin feature/minha-feature`
-5. Abra um Pull Request
-
-## 📄 Licença
+## Licença
 
 Licença a definir. Veja o arquivo `LICENSE` quando disponível.
 
-## 👤 Autores
+## Autores
 
-Desenvolvido por **<seu nome / equipe>**.
+Desenvolvido por **Henrique e Lorenzo**.
