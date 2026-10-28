@@ -1,0 +1,17 @@
+#pip install -r .\requirements.txt
+fastapi[standard]
+uvicorn[standard]
+jinja2
+Babel
+python-multipart
+itsdangerous
+pytest
+pytest-asyncio
+pytest-cov
+passlib[bcrypt]==1.7.4
+python-jose[cryptography]
+Pillow
+pydantic>=2.0.0
+email-validator>=2.0.0
+bcrypt>=3.2.0,<4.0.0  
+resend
