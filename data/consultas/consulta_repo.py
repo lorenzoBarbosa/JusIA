@@ -52,6 +52,17 @@ def inserir_consulta(consulta: Consulta) -> int:
         print(f"Error inserting consulta: {e}")
         return -1
 
+def selecionar_consulta_por_status(status: str) -> list[Consulta]:
+    try:
+        conn = get_connection()
+        cursor = conn.cursor()
+        cursor.execute(SELECIONAR_CONSULTAS_POR_STATUS, (status,))
+        consultas = [_linha_para_consulta(tupla) for tupla in cursor.fetchall()]
+        conn.close()
+        return consultas
+    except:
+        return []
+
 def selecionar_consulta_por_id(id: int) -> Consulta:
     try:
         conn = get_connection()

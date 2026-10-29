@@ -1,4 +1,5 @@
 import secrets
+from dotenv import load_dotenv
 from fastapi import FastAPI
 from fastapi.responses import HTMLResponse
 from fastapi.templating import Jinja2Templates
@@ -7,10 +8,14 @@ import uvicorn
 from starlette.middleware.sessions import SessionMiddleware
 import os
 
+from data.db import criar_db
 from routes.index_router import router as index_router
 from routes.painel_router import router as painel_router
 
+load_dotenv()
 app = FastAPI()
+
+criar_db()
 
 SECRET_KEY = os.getenv("SECRET_KEY", "sua-chave-secreta-aqui")
 app.add_middleware(

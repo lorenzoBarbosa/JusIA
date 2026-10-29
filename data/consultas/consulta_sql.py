@@ -46,6 +46,16 @@ WHERE advogado_id = ?
 ORDER BY id
 """
 
+SELECIONAR_CONSULTAS_POR_STATUS="""
+SELECT
+    id, escritorio_id, telefone_cliente, nome_cliente, cpf_cliente, email_cliente,
+    area, resumo, urgencia, advogado_id, processo_andamento, cidade_estado,
+    disponibilidade, data_hora_consulta, status, data_criacao
+FROM consultas
+WHERE status = ?
+ORDER BY id
+"""
+
 SELECIONAR_TODAS_CONSULTAS="""
 SELECT
     id, escritorio_id, telefone_cliente, nome_cliente, cpf_cliente, email_cliente,
