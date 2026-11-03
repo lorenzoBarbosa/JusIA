@@ -7,4 +7,5 @@ class Usuario:
     nome: str
     email: str
     senha_hash: str
+    perfil: str  
     ativo: bool

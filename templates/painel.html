@@ -51,23 +51,22 @@
                     <div class="quadro">
                         <!-- O N8N preenche esta lista com um .lead-card por lead -->
                         <div class="leads-lista" id="leads-recentes">
-
-                            <!-- Card de exemplo (modelo para o N8N) -->
-                            <article class="lead-card">
-                                <div class="lead-topo">
-                                    <h3>Nome do cliente</h3>
-                                    <span class="lead-status">Nova</span>
-                                </div>
-                                <p class="lead-info"><strong>Telefone:</strong> (27) 99999-9999</p>
-                                <p class="lead-info"><strong>Assunto:</strong> Área do direito</p>
-                                <p class="lead-info"><strong>Recebida em:</strong> 25/10/2026 às 20:37</p>
-                                <p class="lead-resumo">Resumo do atendimento feito pela secretária de IA no WhatsApp.</p>
-                                <div class="lead-botoes">
-                                    <button type="button" class="botao-validar">Validar</button>
-                                    <button type="button" class="botao-recusar">Recusar</button>
-                                </div>
-                            </article>
-
+                            {% for consulta in consultas %}
+                                <article class="lead-card">
+                                    <div class="lead-topo">
+                                        <h3>{{ consulta.nome_cliente }}</h3>
+                                        <span class="lead-status">Nova</span>
+                                    </div>
+                                    <p class="lead-info"><strong>Telefone:</strong> {{ consulta.telefone_cliente }}</p>
+                                    <p class="lead-info"><strong>Assunto:</strong> {{ consulta.area }}</p>
+                                    <p class="lead-info"><strong>Recebida em:</strong> {{ consulta.data_criacao }}</p>
+                                    <p class="lead-resumo">{{ consulta.resumo }}</p>
+                                    <div class="lead-botoes">
+                                        <button type="button" class="botao-validar">Validar</button>
+                                        <button type="button" class="botao-recusar">Recusar</button>
+                                    </div>
+                                </article>
+                            {% endfor %}
                         </div>
                     </div>
                 </section>
