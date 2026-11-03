@@ -1,18 +1,38 @@
-import sqlite3
 import os
+import sqlite3
+from contextlib import contextmanager
+from datetime import datetime
+
+
+def agora() -> str:
+    return datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+
 
 def get_connection():
-    database_path = os.environ.get('TEST_DATABASE_PATH', 'dados.db')
-    conexao = sqlite3.connect(database_path)
+    database_path = os.environ.get("TEST_DATABASE_PATH", "dados.db")
+    conexao = sqlite3.connect(database_path, timeout=15)
     conexao.row_factory = sqlite3.Row
+    conexao.execute("PRAGMA journal_mode=WAL")
     return conexao
 
-def criar_db():
-    conn = get_connection()
-    cursor = conn.cursor()
 
+@contextmanager
+def conexao():
+    """Commit se der certo, rollback se der erro, e sempre fecha a conexão."""
+    conn = get_connection()
+    try:
+        yield conn
+        conn.commit()
+    except Exception:
+        conn.rollback()
+        raise
+    finally:
+        conn.close()
+
+
+def criar_db():
     comando_sql = """
-        CREATE TABLE IF NOT EXISTS escritorios ( 
+        CREATE TABLE IF NOT EXISTS escritorios (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             nome TEXT NOT NULL,
             cnpj_registro TEXT UNIQUE,
@@ -84,8 +104,5 @@ def criar_db():
         CREATE INDEX IF NOT EXISTS idx_consultas_data
             ON consultas(escritorio_id, data_hora_consulta);
     """
-
-    cursor.executescript(comando_sql)
-    conn.commit()
-    cursor.close()
-    conn.close()
+    with conexao() as conn:
+        conn.executescript(comando_sql)
