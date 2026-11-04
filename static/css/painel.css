@@ -489,3 +489,50 @@ body {
 @media (min-width: 600px) {
   .rodape-conteudo { grid-template-columns: 1fr 1fr; }
 }
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 200;
+}
+.overlay.active {
+  display: flex;
+}
+.lead-aberta {
+  background-color: var(--branco);
+  padding: 20px;
+  border-radius: 4px;
+  max-width: 600px;
+  width: 90%;
+  position: relative;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+.overlay-fechar {
+  position: absolute;
+  top: 8px;
+  right: 12px;
+  background: none;
+  border: none;
+  font-size: 1.8rem;
+  line-height: 1;
+  color: var(--marrom);
+  cursor: pointer;
+}
+
+.overlay button {
+  flex: 1;
+  padding: 10px;
+  font-family: var(--fonte-texto);
+  font-size: 0.85rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 0.2s, color 0.2s;
+}

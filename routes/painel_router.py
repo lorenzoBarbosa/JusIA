@@ -11,6 +11,9 @@ from pydantic import BaseModel, EmailStr, field_validator
 from data.consultas import consulta_repo
 from data.consultas.consulta_model import Consulta
 
+import httpx
+
+
 router = APIRouter()
 templates = Jinja2Templates(directory="templates")
 
@@ -73,3 +76,29 @@ async def get_n8n_data(dados: Consulta_n8n):
         raise HTTPException(status_code=500, detail="Erro ao salvar consulta")
 
     return {"ok": True, "id": id_consulta}
+
+
+N8N_WEBHOOK_URL = "https://lorenzobarbosaalves.app.n8n.cloud/webhook-test/consulta-resposta"
+
+class Decisao(BaseModel):
+    decisao: Literal["aceita", "recusada"]
+
+@router.post("/leads/{lead_id}/decidir")
+async def decidir_lead(lead_id: int, corpo: Decisao):
+    consulta_repo.atualizar_status_consulta(lead_id, corpo.decisao)
+    consulta = consulta_repo.selecionar_consulta_por_id(lead_id)
+    payload = {
+        "id": lead_id,
+        "decisao": corpo.decisao,
+        "telefone_cliente": consulta.telefone_cliente,
+        "nome_cliente": consulta.nome_cliente,
+        "status": consulta.status,
+    }
+    try:
+        async with httpx.AsyncClient(timeout=10) as client:
+            r = await client.post(N8N_WEBHOOK_URL, json=payload)
+            r.raise_for_status()
+    except httpx.HTTPError:
+        raise HTTPException(status_code=502, detail="Falha ao contatar o n8n")
+
+    return {"ok": True}
