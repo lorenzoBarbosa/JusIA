@@ -71,8 +71,8 @@ if (header && menuIcon && navigation) {
 
 const overlay = document.getElementById("overlay");
 const botaoFechar = document.getElementById("fechar-overlay");
-const botaoAceitar = document.getElementById("aceitar-lead");
-const botaoRecusar = document.getElementById("recusar-lead");
+const botaoAceitar = document.querySelector(".lead-aberta .botao-validar");
+const botaoRecusar = document.querySelector(".lead-aberta .botao-recusar");
 
 let botaoQueAbriu = null;  
 let leadAtual = null;      
