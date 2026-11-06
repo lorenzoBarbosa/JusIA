@@ -16,6 +16,10 @@ from starlette.middleware.sessions import SessionMiddleware
 from data.db import criar_db
 from routes.index_router import router as index_router
 from routes.painel_router import router as painel_router
+from routes.painel_consultas_router import router as painel_consulta_router
+from routes.cadastro_advogado_router import router as cadastro_advogado_router
+from routes.login_router import router as login_router
+
 from data.escritorio import escritorio_repo
 from data.escritorio.escritorio_model import Escritorio
 from data.usuario import usuario_repo
@@ -40,29 +44,12 @@ admin = Usuario(
     perfil="administrador",
     ativo=1
 )
-consulta_teste= Consulta(
-    id=0,
-    escritorio_id= 1,
-    telefone_cliente= "282828282",
-    nome_cliente= "claudio",
-    cpf_cliente="124215345",
-    email_cliente="wmkldgfmkl",
-    area="civil",
-    resumo="lomsklfdmvlaskmfvlkamdvkl",
-    urgencia="sfkjadskv",
-    advogado_id=1,
-    processo_andamento="maklsdc",
-    cidade_estado="cachoeiro ES",
-    disponibilidade="smdklc",
-    data_hora_consulta="dsf",
-    status="teste",
-    data_criacao="jsdfhaj"
-)
+
 
 criar_db()
 escritorio_repo.inserir_escritorio(escritorio)
 usuario_repo.inserir_usuario(admin)
-consulta_repo.inserir_consulta(consulta_teste)
+
 
 
 # Em produção, defina SECRET_KEY no ambiente.
@@ -81,6 +68,9 @@ app.mount("/static", StaticFiles(directory="static"), name="static")
 
 app.include_router(index_router)
 app.include_router(painel_router)
+app.include_router(painel_consulta_router)
+app.include_router(cadastro_advogado_router)
+app.include_router(login_router)
 
 
 if __name__ == "__main__":

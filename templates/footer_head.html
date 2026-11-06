@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="/static/css/painel.css">
+        <title>Painel de Leads | Desteffani &amp; Barbosa</title>
+    </head>
+    <body>
+        <header class="cabecalho">
+            <div class="cabecalho-conteudo">
+                <a href="/painel" class="logo-link">
+                    <img src="/static/img/logo.png" alt="Logo Desteffani &amp; Barbosa" class="logo-imagem">
+                    <div class="logo-texto">
+                        <strong>Desteffani &amp; Barbosa</strong>
+                        <span>Painel interno</span>
+                    </div>
+                </a>
+
+                <input type="checkbox" class="menu-toggle" id="menu-toggle">
+                <label for="menu-toggle" class="menu-botao" aria-label="Abrir menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </label>
+
+                <nav class="menu">
+                    <form class="busca" action="painel.html" method="get">
+                        <input type="search" name="busca" placeholder="Buscar lead por nome ou telefone" aria-label="Buscar lead">
+                        <button type="submit">Buscar</button>
+                    </form>
+                    <a href="/painel/consultas">Todas as leads</a>
+                    <a href="/painel">Agenda</a>
+                    <a href="/painel" class="menu-contato">Sair</a>
+                </nav>
+            </div>
+        </header>
+        {% block content %}
+        {% endblock %}
+        <footer class="rodape">
+            <div class="rodape-conteudo">
+                <div class="rodape-marca">
+                    <h2>Desteffani &amp; Barbosa</h2>
+                    <p>Área restrita aos funcionários do escritório</p>
+                </div>
+            </div>
+            <p class="rodape-copy">© 2026 Desteffani &amp; Barbosa. Todos os direitos reservados.</p>
+        </footer>
+        <script src="/static/js/script.js"></script>
+    </body>
+</html>

@@ -12,6 +12,8 @@
   --linha: #e3dfcf;
   --alerta: #a63d2f;
   --alerta-fundo: #f6e3df;
+  --verde-sucesso: #4caf50;
+  --verde-sucesso-fundo: #e6f4ea;
 }
 
 *{
@@ -535,4 +537,79 @@ body {
   font-weight: 700;
   cursor: pointer;
   transition: background-color 0.2s, color 0.2s;
+}
+
+/* FORMULÁRIO DE CADASTRO */
+.formulario {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+}
+
+.campo {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.campo label {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--marrom);
+}
+
+.campo input {
+  padding: 12px;
+  background-color: var(--creme);
+  color: var(--texto);
+  border: 1px solid var(--linha);
+  font-family: var(--fonte-texto);
+  font-size: 0.9rem;
+}
+
+.campo input:focus {
+  border-color: var(--dourado);
+  outline: none;
+}
+
+.campo-checkbox {
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+}
+
+.campo-checkbox input {
+  width: 18px;
+  height: 18px;
+  padding: 0;
+}
+
+.formulario .botao {
+  justify-self: start;
+  border: none;
+  cursor: pointer;
+  font-family: var(--fonte-texto);
+}
+
+.mensagem {
+  margin-bottom: 20px;
+  padding: 12px 16px;
+  background-color: var(--alerta-fundo);
+  color: var(--alerta);
+  border-left: 4px solid var(--alerta);
+  font-size: 0.9rem;
+}
+
+.mensagem-sucesso {
+  margin-bottom: 20px;
+  padding: 12px 16px;
+  background-color: var(--verde-sucesso-fundo);
+  color: var(--verde-sucesso);
+  border-left: 4px solid var(--verde-sucesso);
+  font-size: 0.9rem;
+}
+
+@media (min-width: 600px) {
+  .formulario { grid-template-columns: repeat(2, 1fr); }
+  .formulario .botao { grid-column: 1 / -1; }
 }

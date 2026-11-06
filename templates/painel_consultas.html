@@ -1,0 +1,67 @@
+{% extends "footer_head.html" %}
+
+{% block content %}
+        <main style="min-height: 100vh; width: auto;">
+            <div class="painel-conteudo">
+                <section class="painel-secao">
+                    <div class="secao-cabecalho">
+                        <div>
+                            <p class="rotulo">Todas as consultas</p>
+                            <h2>Consultas</h2>
+                        </div>
+                    </div>
+                    <div class="quadro">
+                        <div class="leads-lista" id="leads-recentes">
+                            {% for consulta in consultas %}
+                                <article class="lead-card"
+                                        data-id="{{ consulta.id }}"
+                                        data-nome="{{ consulta.nome_cliente }}"
+                                        data-telefone="{{ consulta.telefone_cliente }}"
+                                        data-assunto="{{ consulta.area }}"
+                                        data-recebida="{{ consulta.data_criacao }}"
+                                        data-resumo="{{ consulta.resumo }}"
+                                        data-urgencia="{{ consulta.urgencia }}"
+                                        data-processo-andamento="{{ consulta.proceso_andamento }}"
+                                        data-cidade-estado="{{ consulta.cidade_estado }}"
+                                        data-email="{{ consulta.email_cliente }}"
+                                        data-disponibilidade="{{ consulta.disponibilidade }}"
+                                        data-status="{{ consulta.status }}">
+                                    <div class="lead-topo">
+                                        <h3>{{ consulta.nome_cliente }}</h3>
+                                        <span class="lead-status">{% if consulta.status == "analise" %} Análise {% elif consulta.status == "aceita" %} Validada {% elif consulta.status == "recusada" %} Recusada {% else %} {{ consulta.status }} {% endif %}</span>
+                                    </div>
+                                    <p class="lead-info"><strong>Telefone:</strong> {{ consulta.telefone_cliente }}</p>
+                                    <p class="lead-info"><strong>Assunto:</strong> {{ consulta.area }}</p>
+                                    <p class="lead-info"><strong>Recebida em:</strong> {{ consulta.data_criacao }}</p>
+                                    <p class="lead-resumo">{{ consulta.resumo }}</p>
+                                    <div class="lead-botoes">
+                                        <button type="button" class="botao-validar abrir-lead">Abrir</button>
+                                    </div>
+                                </article>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </main>
+        <div class="overlay" id="overlay" aria-hidden="true">
+            <div class="lead-aberta" role="dialog" aria-modal="true" aria-labelledby="overlay-nome">
+                <button type="button" id="fechar-overlay" class="overlay-fechar" aria-label="Fechar">&times;</button>
+                <h3 id="overlay-nome"></h3>
+                <p class="lead-info"><strong>Telefone:</strong> <span id="overlay-telefone"></span></p>
+                <p class="lead-info"><strong>Assunto:</strong> <span id="overlay-assunto"></span></p>
+                <p class="lead-info"><strong>Recebida em:</strong> <span id="overlay-recebida"></span></p>
+                <p class="lead-info"><strong>Urgência:</strong> <span id="overlay-urgencia"></span></p>
+                <p class="lead-info"><strong>Processo em andamento:</strong> <span id="overlay-processo-andamento"></span></p>
+                <p class="lead-info"><strong>Cidade/Estado:</strong> <span id="overlay-cidade-estado"></span></p>
+                <p class="lead-info"><strong>Email:</strong> <span id="overlay-email"></span></p>
+                <p class="lead-info"><strong>Disponibilidade:</strong> <span id="overlay-disponibilidade"></span></p>
+                <p class="lead-info"><strong>Status:</strong> <span id="overlay-status"></span></p>
+                <p class="lead-resumo" id="overlay-resumo"></p>
+                <div class="lead-botoes">
+                    <button id="aceitar-lead" type="button" class="botao-validar">Validar</button>
+                    <button id="recusar-lead" type="button" class="botao-recusar">Recusar</button>
+                </div>
+            </div>
+        </div>
+{% endblock %}

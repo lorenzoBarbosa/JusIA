@@ -13,6 +13,11 @@ from data.consultas.consulta_model import Consulta
 
 import httpx
 
+from datetime import datetime, timedelta
+
+DIAS_ATRASO = 1
+DIAS_URGENTE = 3
+FORMATO_DATA = "%Y-%m-%d %H:%M:%S"
 
 router = APIRouter()
 templates = Jinja2Templates(directory="templates")
@@ -45,9 +50,24 @@ class Consulta_n8n(BaseModel):
 
 @router.get("/painel", response_class=HTMLResponse)
 async def get_painel(request: Request):
+    agora = datetime.now()
+    consulta_repo.atualizar_status_por_prazo(
+        limite_atraso=(agora - timedelta(days=DIAS_ATRASO)).strftime(FORMATO_DATA),
+        limite_urgente=(agora - timedelta(days=DIAS_URGENTE)).strftime(FORMATO_DATA),
+    )
     consultas = consulta_repo.selecionar_consulta_por_status("analise")
-    return templates.TemplateResponse(request, "painel.html", {"consultas": consultas})
+    consultas_em_atraso = consulta_repo.selecionar_consulta_por_status("em atraso")
+    consultas_urgentes = consulta_repo.selecionar_consulta_por_status("urgente")
+    consultas_antigas = consultas_em_atraso + consultas_urgentes
 
+    return templates.TemplateResponse(
+        request,
+        "painel.html",
+        {
+            "consultas": consultas,
+            "consultas_antigas": consultas_antigas
+        },
+    )
 
 @router.post("/painel",status_code=status.HTTP_201_CREATED)
 async def get_n8n_data(dados: Consulta_n8n):

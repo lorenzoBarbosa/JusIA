@@ -120,7 +120,6 @@ def selecionar_consulta_paginado(limite: int, offset: int) -> list[Consulta]:
         print(f"Error selecting paginated consultas: {e}")
         return []
 
-
 def atualizar_status_consulta(id: int, status: str) -> bool:
     try:
         with conexao() as conn:
@@ -129,6 +128,17 @@ def atualizar_status_consulta(id: int, status: str) -> bool:
     except Exception as e:
         print(f"Error updating consulta status: {e}")
         return False
+
+def atualizar_status_por_prazo(limite_atraso: str, limite_urgente: str) -> int:
+    try:
+        with conexao() as conn:
+            urgentes = conn.execute(MARCAR_URGENTES, (limite_urgente,)).rowcount
+            atrasadas = conn.execute(MARCAR_EM_ATRASO, (limite_atraso,)).rowcount
+            return urgentes + atrasadas
+    except Exception as e:
+        print(f"Error updating status by deadline: {e}")
+        return 0
+
 
 
 def excluir_consulta_por_id(id: int) -> bool:

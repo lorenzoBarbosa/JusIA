@@ -66,6 +66,20 @@ SET status = ?
 WHERE id = ?
 """
 
+MARCAR_URGENTES = """
+UPDATE consultas
+SET status = 'urgente'
+WHERE status IN ('analise', 'em atraso')
+  AND datetime(data_criacao) < ?
+"""
+
+MARCAR_EM_ATRASO = """
+UPDATE consultas
+SET status = 'em atraso'
+WHERE status = 'analise'
+  AND datetime(data_criacao) < ?
+"""
+
 EXCLUIR_CONSULTA_POR_ID = """
 DELETE FROM consultas
 WHERE id = ?

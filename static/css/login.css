@@ -1,0 +1,233 @@
+/* Este arquivo complementa o style.css (cabeçalho, rodapé e variáveis base vêm de lá) */
+:root {
+    --cor-dourado-claro: #E4C5A6;
+    --cor-texto-claro: #E6D9CE;
+    --cor-texto-suave: #55483F;
+    --cor-cafe-translucido: rgba(74, 33, 21, 0.93);
+    --cor-alerta: #A63D2F;
+    --cor-alerta-fundo: #F6E3DF;
+}
+
+.login {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: calc(100vh - 86px);
+}
+
+/* LADO ESQUERDO: imagem e texto */
+.login-visual {
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+    background: #EAE5D2;
+}
+
+.login-visual img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+.login-visual-texto {
+    position: relative;
+    width: 100%;
+    padding: 44px max(32px, 6%);
+    background: var(--cor-cafe-translucido);
+    color: var(--cor-branco);
+}
+
+.login-rotulo {
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 1.45;
+    text-transform: uppercase;
+    color: var(--cor-marrom-escuro);
+}
+
+.login-visual-texto .login-rotulo {
+    color: var(--cor-dourado-claro);
+}
+
+.login-visual-texto h1 {
+    max-width: 520px;
+    margin: 14px 0;
+    font-family: var(--fonte-titulo);
+    font-size: 38px;
+    font-weight: 500;
+    line-height: 1.2;
+}
+
+.login-visual-texto h1 em {
+    color: var(--cor-dourado-claro);
+}
+
+.login-descricao {
+    max-width: 52ch;
+    color: var(--cor-texto-claro);
+    font-size: 16px;
+    line-height: 1.7;
+}
+
+.login-voltar {
+    margin-top: 22px;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.login-voltar a {
+    color: var(--cor-dourado-claro);
+    text-decoration: none;
+    transition: color 180ms ease;
+}
+
+.login-voltar a:hover {
+    color: var(--cor-branco);
+}
+
+/* LADO DIREITO: formulário */
+.login-area {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 48px 32px;
+    background: var(--cor-bege);
+}
+
+.login-card {
+    width: 100%;
+    max-width: 440px;
+    padding: 40px 36px;
+    background: var(--cor-branco);
+    border: 1px solid var(--cor-linhas);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+
+.login-card h2 {
+    margin-top: 10px;
+    color: var(--cor-cafe-escuro);
+    font-family: var(--fonte-titulo);
+    font-size: 34px;
+    font-weight: 500;
+    line-height: 1.2;
+}
+
+.login-subtitulo {
+    margin: 8px 0 28px;
+    color: var(--cor-texto-suave);
+    font-size: 15px;
+    line-height: 1.6;
+}
+
+.login-erro {
+    margin-bottom: 20px;
+    padding: 12px 16px;
+    background: var(--cor-alerta-fundo);
+    border-left: 4px solid var(--cor-alerta);
+    color: var(--cor-alerta);
+    font-size: 14px;
+}
+
+.login-form {
+    display: grid;
+    gap: 20px;
+}
+
+.login-campo {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.login-campo label {
+    color: var(--cor-cafe-claro);
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.login-campo input {
+    padding: 13px 14px;
+    background: var(--cor-bege);
+    border: 1px solid var(--cor-linhas);
+    color: inherit;
+    font-family: var(--fonte-texto);
+    font-size: 15px;
+    transition: border-color 180ms ease, background 180ms ease;
+}
+
+.login-campo input:focus {
+    outline: none;
+    border-color: var(--cor-marrom-claro);
+    background: var(--cor-branco);
+}
+
+.login-botao {
+    min-height: 52px;
+    border: 0;
+    background: var(--cor-cafe-escuro);
+    color: var(--cor-branco);
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 700;
+    transition: background 180ms ease, transform 180ms ease;
+}
+
+.login-botao:hover {
+    background: var(--cor-cafe-claro);
+    transform: translateY(-2px);
+}
+
+.login-ajuda {
+    margin-top: 24px;
+    padding-top: 18px;
+    border-top: 1px solid var(--cor-linhas);
+    color: var(--cor-texto-suave);
+    font-size: 13px;
+    line-height: 1.6;
+    text-align: center;
+}
+
+/* RESPONSIVIDADE */
+@media (max-width: 900px) {
+    .login {
+        grid-template-columns: 1fr;
+        min-height: 0;
+    }
+
+    .login-visual {
+        min-height: 440px;
+    }
+
+    .login-area {
+        padding: 40px 20px 56px;
+    }
+}
+
+@media (max-width: 600px) {
+    .login-visual {
+        min-height: 400px;
+    }
+
+    .login-visual-texto {
+        padding: 28px 20px;
+    }
+
+    .login-visual-texto h1 {
+        font-size: 30px;
+    }
+
+    .login-descricao {
+        font-size: 15px;
+    }
+
+    .login-card {
+        padding: 32px 22px;
+    }
+
+    .login-card h2 {
+        font-size: 30px;
+    }
+}

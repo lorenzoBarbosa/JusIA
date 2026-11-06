@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=menu"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300..700;1,300..700&display=swap" rel="stylesheet">
+    <title>Acesso restrito | DESTEFFANI &amp; BARBOSA ADVOCACIA</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="stylesheet" href="/static/css/login.css">
+    <script src="/static/js/script.js" defer></script>
+</head>
+<body>
+    <header>
+        <div id="header-titulo">
+            <img src="/static/img/logo.png" alt="Logotipo da empresa">
+            <div id="header-titulo-texto">
+                <p id="nome-empresa">Desteffani &amp; Barbosa</p>
+                <p id="subtitulo">ADVOCACIA E CONSULTORIA JURÍDICA</p>
+            </div>
+        </div>
+        
+        <span class="material-symbols-outlined" id="menu-icon">menu</span>
+
+        <nav id="nav-bar">
+            <ul id="nav-list">
+                <li><a href="/">Início</a></li>
+                <li><a href="/">Como podemos ajudar</a></li>
+                <li><a href="/">Sobre o escritório</a></li>
+                <li><a href="/">Como trabalhamos</a></li>
+                <li><a href="/">Fale conosco</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="login">
+        <div class="login-visual">
+            <img src="/static/img/estatua-da-justica.avif" alt="Estátua da justiça segurando uma balança e uma espada">
+            <div class="login-visual-texto">
+                <p class="login-rotulo">Área restrita</p>
+                <h1>Acesso exclusivo para <em>funcionários</em> do escritório</h1>
+                <p class="login-descricao">Esta página é destinada à equipe da Desteffani &amp; Barbosa. Aqui você acompanha as leads, valida atendimentos e consulta a agenda.</p>
+                <p class="login-voltar"><a href="/">&larr; Voltar ao site</a></p>
+            </div>
+        </div>
+
+        <div class="login-area">
+            <div class="login-card">
+                <p class="login-rotulo">Painel interno</p>
+                <h2>Entrar</h2>
+                <p class="login-subtitulo">Use o e-mail e a senha cadastrados pelo administrador.</p>
+
+                <!-- Mensagem de erro (descomente quando ligar ao backend)
+                <p class="login-erro">E-mail ou senha incorretos.</p>
+                -->
+
+                <form class="login-form" method="post">
+                    <div class="login-campo">
+                        <label for="email">E-mail</label>
+                        <input type="email" id="email" name="email" placeholder="seuemail@escritorio.com.br" autocomplete="username" required autofocus>
+                    </div>
+
+                    <div class="login-campo">
+                        <label for="senha">Senha</label>
+                        <input type="password" id="senha" name="senha" placeholder="Digite sua senha" autocomplete="current-password" required>
+                    </div>
+
+                    <button type="submit" class="login-botao">Entrar</button>
+                </form>
+
+                <p class="login-ajuda">Esqueceu a senha ou não tem acesso? Fale com o administrador do escritório.</p>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div id="footer-texto">
+            <div>
+                <img src="/static/img/logo.png" alt="Logotipo da empresa">
+                <p>DESTEFFANI &amp; BARBOSA ADVOCACIA</p>
+            </div>
+            <p>Rua 13 de Maio, 1.200 - Sala 01 - Centro - CEP 89.300-000 - Jaraguá do Sul/SC</p>
+            <p>Telefone: (47) 9 9999-9999 | E-mail: contato@desteffani.com.br</p>
+        </div>
+    </footer>
+</body>
+</html>

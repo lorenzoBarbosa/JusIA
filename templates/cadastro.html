@@ -1,0 +1,118 @@
+{% extends "footer_head.html" %}
+
+{% block content %}
+        <main style="min-height: 100vh; width: auto;">
+            <div class="painel-conteudo">
+                {% if mensagem %}
+                    <p class="{% if sucesso==1 %}mensagem-sucesso{% else %}mensagem{% endif %}">{{ mensagem }}</p>
+                {% endif %}
+                <section class="painel-secao">
+                    <div class="secao-cabecalho">
+                        <div>
+                            <p class="rotulo">Administração</p>
+                            <h2>Cadastrar administrador</h2>
+                        </div>
+                    </div>
+
+                    <div class="quadro">
+
+                        <form class="formulario" method="post">
+                            <div class="campo">
+                                <label for="nome">Nome completo</label>
+                                <input type="text" id="nome" name="nome" required>
+                            </div>
+
+                            <div class="campo">
+                                <label for="email">E-mail</label>
+                                <input type="email" id="email" name="email" required>
+                            </div>
+
+                            <div class="campo">
+                                <label for="senha">Senha</label>
+                                <input type="password" id="senha" name="senha" minlength="6" autocomplete="new-password" required>
+                            </div>
+
+                            <div class="campo campo-checkbox">
+                                <input type="checkbox" id="ativo" name="ativo" checked>
+                                <label for="ativo">Cadastro ativo</label>
+                            </div>
+
+                            <input type="hidden" name="perfil" value="administrador">
+
+                            <button type="submit" class="botao">Cadastrar administrador</button>
+                        </form>
+                    </div>
+                </section>
+                <section class="painel-secao">
+                    <div class="secao-cabecalho">
+                        <div>
+                            <p class="rotulo">Administração</p>
+                            <h2>Cadastrar advogado</h2>
+                        </div>
+                    </div>
+
+                    <div class="quadro">
+                        <form class="formulario" method="post">
+                            <div class="campo">
+                                <label for="nome">Nome completo</label>
+                                <input type="text" id="nome" name="nome" required>
+                            </div>
+
+                            <div class="campo">
+                                <label for="email">E-mail</label>
+                                <input type="email" id="email" name="email" required>
+                            </div>
+
+                            <div class="campo">
+                                <label for="senha">Senha</label>
+                                <input type="password" id="senha" name="senha" minlength="6" autocomplete="new-password" required>
+                            </div>
+
+                            <div class="campo campo-checkbox">
+                                <input type="checkbox" id="ativo" name="ativo" checked>
+                                <label for="ativo">Cadastro ativo</label>
+                            </div>
+
+                            <input type="hidden" name="perfil" value="advogado">
+
+                            <button type="submit" class="botao">Cadastrar advogado</button>
+                        </form>
+                    </div>
+                </section>
+                <section class="painel-secao">
+                    <div class="secao-cabecalho">
+                        <div>
+                            <p class="rotulo">Cadastro de secretários</p>
+                            <h2>Cadastrar secretário</h2>
+                        </div>
+                    </div>
+
+                    <div class="quadro">
+                        <form class="formulario" method="post">
+                            <div class="campo">
+                                <label for="nome">Nome completo</label>
+                                <input type="text" id="nome" name="nome" required>
+                            </div>
+
+                            <div class="campo">
+                                <label for="email">E-mail</label>
+                                <input type="email" id="email" name="email" required>
+                            </div>
+
+                            <div class="campo">
+                                <label for="senha">Senha</label>
+                                <input type="password" id="senha" name="senha" minlength="6" autocomplete="new-password" required>
+                            </div>
+
+                            <div class="campo campo-checkbox">
+                                <input type="checkbox" id="ativo" name="ativo" checked>
+                                <label for="ativo">Cadastro ativo</label>
+                            </div>
+                            <input type="hidden" name="perfil" value="secretario">
+                            <button type="submit" class="botao">Cadastrar secretário</button>
+                        </form>
+                    </div>
+                </section>
+            </div>
+        </main>
+{% endblock %}

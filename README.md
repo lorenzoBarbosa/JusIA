@@ -102,3 +102,5 @@ Licença a definir. Veja o arquivo `LICENSE` quando disponível.
 ## Autores
 
 Desenvolvido por **Henrique e Lorenzo**.
+
+ngrok http 8000 --url https://chaffing-femur-spirited.ngrok-free.dev
