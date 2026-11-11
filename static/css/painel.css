@@ -348,6 +348,31 @@ body {
   font-style: italic;
 }
 
+.campo-horario {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-top: 12px;
+}
+
+.campo-horario label {
+  color: var(--marrom);
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+.campo-horario input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid var(--linha);
+  font: inherit;
+}
+
+.campo-horario small {
+  color: var(--texto);
+  font-size: 0.8rem;
+}
+
 .lead-botoes {
   display: flex;
   gap: 8px;

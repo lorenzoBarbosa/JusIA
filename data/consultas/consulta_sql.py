@@ -62,7 +62,7 @@ LIMIT ? OFFSET ?
 
 ATUALIZAR_STATUS_CONSULTA = """
 UPDATE consultas
-SET status = ?
+SET status = ?, data_hora_consulta = COALESCE(?, data_hora_consulta)
 WHERE id = ?
 """
 

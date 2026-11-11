@@ -98,14 +98,34 @@ async def get_n8n_data(dados: Consulta_n8n):
     return {"ok": True, "id": id_consulta}
 
 
-N8N_WEBHOOK_URL = "https://lorenzobarbosaalves.app.n8n.cloud/webhook-test/consulta-resposta"
+N8N_WEBHOOK_URL = "https://lorenzobarbosaalves8.app.n8n.cloud/webhook/consulta-resposta"
 
 class Decisao(BaseModel):
     decisao: Literal["aceita", "recusada"]
+    data_hora_consulta: datetime | None = None
 
 @router.post("/leads/{lead_id}/decidir")
 async def decidir_lead(lead_id: int, corpo: Decisao):
-    consulta_repo.atualizar_status_consulta(lead_id, corpo.decisao)
+    if corpo.decisao == "aceita":
+        if corpo.data_hora_consulta is None:
+            raise HTTPException(
+                status_code=422,
+                detail="Informe o horário da consultoria para validar a lead",
+            )
+        if corpo.data_hora_consulta <= datetime.now():
+            raise HTTPException(
+                status_code=422,
+                detail="O horário da consultoria deve ser futuro",
+            )
+        data_hora_consulta = corpo.data_hora_consulta.strftime(FORMATO_DATA)
+    else:
+        data_hora_consulta = None
+
+    if not consulta_repo.atualizar_status_consulta(
+        lead_id, corpo.decisao, data_hora_consulta
+    ):
+        raise HTTPException(status_code=404, detail="Consulta não encontrada")
+
     consulta = consulta_repo.selecionar_consulta_por_id(lead_id)
     payload = {
         "id": lead_id,
@@ -113,6 +133,7 @@ async def decidir_lead(lead_id: int, corpo: Decisao):
         "telefone_cliente": consulta.telefone_cliente,
         "nome_cliente": consulta.nome_cliente,
         "status": consulta.status,
+        "data_hora_consulta": consulta.data_hora_consulta,
     }
     try:
         async with httpx.AsyncClient(timeout=10) as client:

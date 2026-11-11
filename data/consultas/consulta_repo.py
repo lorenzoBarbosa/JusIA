@@ -120,10 +120,14 @@ def selecionar_consulta_paginado(limite: int, offset: int) -> list[Consulta]:
         print(f"Error selecting paginated consultas: {e}")
         return []
 
-def atualizar_status_consulta(id: int, status: str) -> bool:
+def atualizar_status_consulta(
+    id: int, status: str, data_hora_consulta: str | None = None
+) -> bool:
     try:
         with conexao() as conn:
-            cursor = conn.execute(ATUALIZAR_STATUS_CONSULTA, (status, id))
+            cursor = conn.execute(
+                ATUALIZAR_STATUS_CONSULTA, (status, data_hora_consulta, id)
+            )
             return cursor.rowcount > 0
     except Exception as e:
         print(f"Error updating consulta status: {e}")
